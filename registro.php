@@ -3,19 +3,23 @@
         
         require_once 'includes/conexion.php';//para poder insertar el usuario
        
+        if(!isset($_SESSION)){
+            session_start();
+        }
         
         
        //RECOGE LOS VALORES DEL FORMULARIO DE REGISTRO
-        
-       $nombre = isset($_POST['nombre'])? $_POST['nombre']: false ;
+                                                                    //CON ESTO EVITAMOS LA INYECCION SQL (IMPIDE QUE SE METAN COMILLAS)
+       $nombre = isset($_POST['nombre'])? $_POST['nombre']: false ; // mysql_real_escape_string($db,$_POST['nombre']):false
        $apellidos = isset($_POST['apellidos'])? $_POST['apellidos']: false ;
-       $email = isset($_POST['email'])? $_POST['email']: false ;
+       $email = isset($_POST['email'])? trim($_POST['email']): false ;//funcion trim para que se guarde sin espacios
        $password = isset($_POST['password'])? $_POST['password']: false ;
         
        //CREAMOS UN ARRAY PARA GUARDAR ERRORES
        $errores = array();
        
        //VALIDAR LOS DATOS ANTES DE GUARDARLOS
+       
        if(!empty($nombre) && !is_numeric($nombre) && !preg_match("/[0-9]/",$nombre)){
            $nombre_validado = true;
        }else{
@@ -27,7 +31,7 @@
            $apellidos_validado = true;
        }else{
            $apellidos_validado = false;
-           $errores['apellido']='El apellido no es valido';
+           $errores['apellidos']='El apellido no es valido';
        }
        
         if(!empty($email) && filter_var($email,FILTER_VALIDATE_EMAIL)){

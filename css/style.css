@@ -198,10 +198,13 @@ input[type="password"]{
     margin-bottom: 2px;
 }
 input[type="button"],
-input[type="submit"]{
+input[type="submit"],
+.boton
+
+{
     margin-top: 5px;
     margin-bottom: 5px;
-      display: block;
+    display: block;
     border-radius: 2px;
     color:white;
     background: #007ee5;
@@ -209,6 +212,20 @@ input[type="submit"]{
     cursor: pointer;
     padding: 7px;
    
+}
+.boton{
+    width: 130px;
+    text-align: center;
+    
+}
+
+.naranja{
+     
+    background: orange;
+}
+.verde{
+     
+    background: #21b921;
 }
 .bloque h3{
     margin-bottom: 15px;
@@ -229,7 +246,7 @@ input[type="password"]{
     background: linear-gradient(to bottom, #f2f2f2 0px, #dad9d4 100%);
     border: 1px solid #c9c9c9;
     border-bottom: none;
-    border-readius: 8px 8px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
     color:#666;
     height: auto;
     padding: 15px;

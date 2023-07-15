@@ -31,7 +31,7 @@ function conseguirCategorias($conexion){
     $categorias = mysqli_query($conexion, $sql);
     
     $result = array();
-    if($categorias && mysqli_num_rows($categorias) >= 1){
+    if($categorias && mysqli_num_rows($categorias) >= 1){//Este condicional verifica si se obtuvieron resultados de la consulta y si hay al menos una fila de categoría en los resultados.
         while($row = mysqli_fetch_assoc($categorias)){
             $result[] = $row;
         }

@@ -225,7 +225,11 @@ input[type="submit"],
 }
 .verde{
      
-    background: #21b921;
+    background: green;
+}
+.rojo{
+     
+    background: red;
 }
 .bloque h3{
     margin-bottom: 15px;

@@ -27,15 +27,18 @@
                         <a href="index.php">Inicio</a>
                     </li>
                     
-                   
-                    <?php
+                 <?php
                     $categorias = conseguirCategorias($db);
-                    foreach ($categorias as $categoria): 
+                    if (!empty($categorias)):
+                        foreach ($categorias as $categoria):
                     ?>
                     <li>
                         <a href="categoria.php?id=<?= $categoria['id'] ?>"><?= $categoria['nombre'] ?></a>
                     </li>
-                    <?php endforeach; ?>
+                    <?php
+                        endforeach;
+                    endif;
+                    ?>
 
 
 

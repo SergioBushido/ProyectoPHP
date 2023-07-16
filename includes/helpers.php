@@ -38,3 +38,22 @@ function conseguirCategorias($conexion){
     }
     return $result;
 }
+
+function conseguirUltimasEntradas($conexion) {
+    $sql = "SELECT e.*, c.*
+            FROM blog_master.entradas e
+            INNER JOIN blog_master.categorias c ON e.categoria_id = c.id 
+            ORDER BY e.id DESC
+            LIMIT 4";
+    
+    $result = mysqli_query($conexion, $sql);
+    $resultado = array();
+    
+    if ($result && mysqli_num_rows($result) >= 1) {
+        while ($fila = mysqli_fetch_assoc($result)) {
+            $resultado[] = $fila;
+        }
+    }
+    
+    return $resultado;
+}

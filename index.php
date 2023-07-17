@@ -16,6 +16,7 @@ require_once 'includes/lateral.php';
         <article class="entrada">
             <a href="">
                 <h2><?= $entrada['titulo'] ?></h2>
+                <span class="fecha"><?=$entrada['titulo'].' | ' .$entrada['fecha']?></span>
                 <p><?= $entrada['descripcion'] ?></p>
             </a>
         </article>

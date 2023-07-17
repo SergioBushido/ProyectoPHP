@@ -13,7 +13,7 @@
             <a href="cerrar.php" class="boton rojo">Cerrar sesión</a>
         </div> 
     <?php endif; ?>           
-
+    <?php if(!isset($_SESSION['usuario'])): ?>  <!<!-- Esto oculta el recuadro cuando nos logeamos -->
     <div id="login" class="bloque">
 
         <h3>Identificate</h3>
@@ -88,4 +88,5 @@
         </form>
         <?php borrarErrores(); ?>
     </div>
+    <?php endif; ?> 
 </aside>

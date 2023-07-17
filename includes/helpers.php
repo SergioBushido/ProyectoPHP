@@ -40,7 +40,7 @@ function conseguirCategorias($conexion){
 }
 
 function conseguirUltimasEntradas($conexion) {
-    $sql = "SELECT e.*, c.*
+    $sql = "SELECT e.*, c.nombre AS 'categoria'
             FROM blog_master.entradas e
             INNER JOIN blog_master.categorias c ON e.categoria_id = c.id 
             ORDER BY e.id DESC

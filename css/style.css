@@ -37,7 +37,11 @@ body{
     background: red;
 }
 
-
+.fecha{
+    color: #4e4e4e;
+    margin-top: 5px;
+    font-size: 14px;
+}
 /*CABECERA*/
 #cabecera{
 width: 85%;

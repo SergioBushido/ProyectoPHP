@@ -5,11 +5,11 @@
         <group>
             <file>file:/C:/xampp/htdocs/proyecto_php/includes/lateral.php</file>
             <file>file:/C:/xampp/htdocs/proyecto_php/index.php</file>
-            <file>file:/C:/xampp/htdocs/proyecto_php/includes/conexion.php</file>
-            <file>file:/C:/xampp/htdocs/proyecto_php/registro.php</file>
+            <file>file:/C:/xampp/htdocs/proyecto_php/crear-entradas.php</file>
+            <file>file:/C:/xampp/htdocs/proyecto_php/guardar-entrada.php</file>
             <file>file:/C:/xampp/htdocs/proyecto_php/crear-categoria.php</file>
             <file>file:/C:/xampp/htdocs/proyecto_php/guardar-categoria.php</file>
-            <file>file:/C:/xampp/htdocs/proyecto_php/includes/redireccion.php</file>
+            <file>file:/C:/xampp/htdocs/proyecto_php/includes/helpers.php</file>
         </group>
     </open-files>
 </project-private>

@@ -43,12 +43,16 @@ function conseguirCategorias($conexion){
     return $result;
 }
 
-function conseguirUltimasEntradas($conexion) {
+function conseguirEntradas($conexion, $limit = null) {
     $sql = "SELECT e.*, c.nombre AS 'categoria'
             FROM blog_master.entradas e
             INNER JOIN blog_master.categorias c ON e.categoria_id = c.id 
-            ORDER BY e.id DESC
-            LIMIT 4";
+            ORDER BY e.id DESC";
+    
+    if ($limit !== null) { // Modificar la condición para verificar si $limit no es nulo
+        // Agregar un espacio antes de "LIMIT" para evitar errores de sintaxis
+        $sql .= " LIMIT $limit";
+    }
     
     $result = mysqli_query($conexion, $sql);
     $resultado = array();
@@ -61,3 +65,7 @@ function conseguirUltimasEntradas($conexion) {
     
     return $resultado;
 }
+
+
+
+

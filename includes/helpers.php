@@ -43,15 +43,18 @@ function conseguirCategorias($conexion){
     return $result;
 }
 
-function conseguirEntradas($conexion, $limit = null) {
+function conseguirEntradas($conexion, $limit = null, $categoria = null) {
     $sql = "SELECT e.*, c.nombre AS 'categoria'
             FROM blog_master.entradas e
-            INNER JOIN blog_master.categorias c ON e.categoria_id = c.id 
-            ORDER BY e.id DESC";
+            INNER JOIN blog_master.categorias c ON e.categoria_id = c.id";
+    
+    if(!empty($categoria)){
+        $sql .= " WHERE e.categoria_id = $categoria";
+    }
     
     if ($limit !== null) { // Modificar la condición para verificar si $limit no es nulo
         // Agregar un espacio antes de "LIMIT" para evitar errores de sintaxis
-        $sql .= " LIMIT $limit";
+        $sql .= " ORDER BY e.id DESC LIMIT $limit";
     }
     
     $result = mysqli_query($conexion, $sql);
@@ -65,6 +68,30 @@ function conseguirEntradas($conexion, $limit = null) {
     
     return $resultado;
 }
+
+
+
+function conseguirCategoria($conexion, $id) {
+    $sql = "SELECT * FROM categorias WHERE id= $id;";
+    $categorias = mysqli_query($conexion, $sql);
+
+    $result = array();
+    if ($categorias && mysqli_num_rows($categorias) >= 1) {
+        while ($row = mysqli_fetch_assoc($categorias)) {
+            $result[] = $row;
+        }
+    } else {
+        // No se encontró ninguna categoría con el ID proporcionado
+        // Aquí puedes agregar un manejo de errores o mensaje de error si lo deseas
+        echo "No se encontró ninguna categoría con el ID proporcionado: $id";
+    }
+
+    
+
+    return $result;
+}
+
+
 
 
 

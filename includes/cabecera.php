@@ -5,7 +5,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Blog de videojuegos</title>
+        <title>Matandome con PHP Pruebas</title>
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
@@ -15,7 +15,7 @@
             <!-- logo -->
             <div id="logo">
                 <a href="index.php">
-                    <h1>Blog de Videojuegos</h1>
+                    <h1>Matandome con PHP</h1>
                 </a>
             </div>
             <!-- MENU -->

@@ -14,7 +14,7 @@ require_once 'includes/lateral.php';
         foreach ($entradas as $entrada):
     ?>
         <article class="entrada">
-            <a href="">
+            <a href="entrada.php?id=<?=$entrada['id']?>">
                 <h2><?= $entrada['titulo'] ?></h2>
                 <span class="fecha"><?= $entrada['titulo'].' | ' .$entrada['fecha'] ?></span>
                 <p><?= $entrada['descripcion'] ?></p>

@@ -90,8 +90,20 @@ function conseguirCategoria($conexion, $id) {
 
     return $result;
 }
-
-
+function conseguirEntrada($conexion, $id){
+    $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e ".
+            "INNER JOIN categorias c ON e.categoria_id = c.id ".
+            "WHERE e.id = $id";
+    $entrada = mysqli_query($conexion, $sql);
+    
+    $result = array();
+    if($entrada && mysqli_num_rows($entrada) >= 1){
+        while($row = mysqli_fetch_assoc($entrada)){
+            $result[] = $row;
+        }
+    }
+    return $result;
+}
 
 
 

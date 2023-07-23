@@ -218,13 +218,14 @@ input[type="submit"],
    
 }
 .boton{
+    color: white; 
     width: 130px;
     text-align: center;
     
 }
 
 .naranja{
-     
+    
     background: orange;
 }
 .verde{

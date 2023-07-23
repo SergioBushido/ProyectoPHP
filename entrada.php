@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
     }
 
     // Ahora que tenemos la entrada actual, podemos obtener su categoría
-    $categoria_nombre = $entrada_actual[0]['categoria'];
+    $categoria_nombre = $entrada_actual['categoria'];
 } else {
     // Redirigir a la página de inicio o mostrar un mensaje de error
     header("Location: index.php");
@@ -36,17 +36,26 @@ $entradas = conseguirEntradas($db, $limit);
 <!-- CAJA PRINCIPAL -->
 <div id="principal">
 
-<?php if (!empty($entrada_actual)) : ?>
-    <h1><?= $entrada_actual[0]['titulo'] ?></h1>
+<?php if ($entrada_actual !== null) : ?>
+    <h1><?= $entrada_actual['titulo'] ?></h1>
     
-    <a href="categoria.php?id=<?=$entrada_actual[0]['categoria_id']?>">//con este href si pinchamos en la categoria nos manda al listado de categorias
-    <h2><?= $entrada_actual[0]['categoria'] ?></h2>
+    <a href="categoria.php?id=<?=$entrada_actual['categoria_id']?>"><!-- con este href si pinchamos en la categoria nos manda al listado de categorias -->
+    <h2><?= $entrada_actual['categoria'] ?></h2>
     </a>
     
-    <h4><?= $entrada_actual[0]['fecha'] ?></h4>
-    <p><?= $entrada_actual[0]['descripcion'] ?></p>
+    <h4><?= $entrada_actual['fecha']?> | <?= $entrada_actual['usuario']?></h4>
+    <p><?= $entrada_actual['descripcion'] ?></p>
 <?php else : ?>
-    <p>No se encontraron entradas.</p>
+    <p>No se encontró la entrada.</p>
+<?php endif; ?>
+    
+    
+<?php if(isset($_SESSION["usuario"]) && $entrada_actual !== null && $_SESSION['usuario']['id'] == $entrada_actual['usuario_id']): ?>
+
+    <!-- solamente aparecen los botones de edicion y borrado para usuarios identificados -->
+    <br/>
+    <a href="editar-entrada.php" class="boton verde">Editar</a>
+    <a href="borrar-entrada.php?id=<?=$entrada_actual['id']?>" class="boton">Eliminar Entrada</a>
 <?php endif; ?>
 
 </div> <!-- FIN PRINCIPAL -->

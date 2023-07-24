@@ -54,7 +54,7 @@ $entradas = conseguirEntradas($db, $limit);
 
     <!-- solamente aparecen los botones de edicion y borrado para usuarios identificados -->
     <br/>
-    <a href="editar-entrada.php" class="boton verde">Editar</a>
+    <a href="editar-entrada.php?id=<?=$entrada_actual['id']?>"class="boton verde">Editar</a>
     <a href="borrar-entrada.php?id=<?=$entrada_actual['id']?>" class="boton">Eliminar Entrada</a>
 <?php endif; ?>
 

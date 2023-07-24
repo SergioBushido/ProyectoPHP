@@ -22,7 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }  
     
     if (count($errores) == 0) {
-        $sql = "INSERT INTO entradas VALUES(NULL, $usuario, $categoria, '$titulo', '$descripcion', CURDATE());";
+        if(isset($_GET['editar'])){
+            $entrada_id = $_GET['editar'];
+            $usuario_id =$_SESSION['usuario']['id'];
+            
+            $sql = "UPDATE entradas SET titulo='$titulo', descripcion='$descripcion', categoria_id=$categoria ".
+                   " WHERE id= $entrada_id AND usuario_id = $usuario_id";
+        }else{
+           $sql = "INSERT INTO entradas VALUES(NULL, $usuario, $categoria, '$titulo', '$descripcion', CURDATE());"; 
+        }
         $guardar = mysqli_query($db, $sql);
 
         if ($guardar) {
@@ -35,8 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } else {
         $_SESSION["errores_entrada"] = $errores;
-        header("Location: crear-entradas.php");
-        exit; // Importante: detener la ejecución del script después de redireccionar
+        if(isset($_GET['editar'])){
+            header("Location: editar-entrada.php?id=".$_GET['editar']);
+        }else{
+                header("Location: crear-entradas.php");
+        exit; // Importante: detener la ejecución del script después de redireccionar 
+        }
+        
     }
 }
 ?>

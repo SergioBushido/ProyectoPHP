@@ -2,6 +2,24 @@
 
 <!-- BARRA LATERAL -->
 <aside id="sidebar">
+    
+      <div id="buscador" class="bloque">
+
+        <h3>Buscar</h3>
+        
+        <?php if(isset($_SESSION['error_login'])): ?>
+        <div  class="alerta alerta-error">
+           <?=$_SESSION['error_login'];?>
+        </div> 
+        <?php endif; ?>  
+
+            <form action="buscar.php" method="POST">
+            <input type="text" name="busqueda"/>
+            <input type="submit" value="buscar"/>
+
+        </form>
+    </div>
+
 
     <?php if(isset($_SESSION['usuario'])): ?>
         <div id="usuario_logueado" class="bloque">

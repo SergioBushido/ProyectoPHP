@@ -42,17 +42,21 @@ function conseguirCategorias($conexion){
     }
     return $result;
 }
-
-function conseguirEntradas($conexion, $limit = null, $categoria = null) {
+function conseguirEntradas($conexion, $limit = null, $categoria = null, $busqueda = null) {
     $sql = "SELECT e.*, c.nombre AS 'categoria'
             FROM blog_master.entradas e
             INNER JOIN blog_master.categorias c ON e.categoria_id = c.id";
     
-    if(!empty($categoria)){
+    // Usar la cláusula "AND" si hay más de una condición
+    if (!empty($categoria) && !empty($busqueda)) {
+        $sql .= " WHERE e.categoria_id = $categoria AND e.titulo LIKE '%$busqueda%'";
+    } elseif (!empty($categoria)) {
         $sql .= " WHERE e.categoria_id = $categoria";
+    } elseif (!empty($busqueda)) {
+        $sql .= " WHERE e.titulo LIKE '%$busqueda%'";
     }
     
-    if ($limit !== null) { // Modificar la condición para verificar si $limit no es nulo
+    if ($limit !== null) {
         // Agregar un espacio antes de "LIMIT" para evitar errores de sintaxis
         $sql .= " ORDER BY e.id DESC LIMIT $limit";
     }
@@ -68,6 +72,7 @@ function conseguirEntradas($conexion, $limit = null, $categoria = null) {
     
     return $resultado;
 }
+
 
 
 
@@ -119,6 +124,7 @@ function conseguirEntrada($conexion, $id){
     }
     return $result;
 }*/
+
 
 
 
